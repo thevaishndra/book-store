@@ -1,9 +1,21 @@
 import express from 'express'
-import { Book } from '../models/book.model'
+import { Book } from "../models/book.model.js";
+import cors from 'cors'
 const router = express.Router()
 
+//option 1 middleware for handling cors policy
+// app.use(cors())
+//option 2 allow custom origin
+app.use(
+  cors({
+    origin : 'http://localhost:3000',
+    methods : ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders : ['Content-Type']
+  })
+)
+
 //route for save a new book
-router.post("/books", async (request, response) => {
+router.post("/", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -31,7 +43,7 @@ router.post("/books", async (request, response) => {
 }); //post method is used to create new book
 
 //route for getting all books from database
-router.get("/books", async (request, response) => {
+router.get("/", async (request, response) => {
   try {
     const books = await Book.find({});
     return response.status(200).json({
@@ -45,7 +57,7 @@ router.get("/books", async (request, response) => {
 });
 
 //route for getting one book from database by id
-router.get("/books/:id", async (request, response) => {
+router.get("/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const book = await Book.findById(id);
@@ -57,7 +69,7 @@ router.get("/books/:id", async (request, response) => {
 });
 
 //route for update a book
-router.put("/books/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -84,7 +96,7 @@ router.put("/books/:id", async (request, response) => {
   }
 });
 
-router.put("/books/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     const { id } = request.params;
 
@@ -117,7 +129,7 @@ router.put("/books/:id", async (request, response) => {
 });
 
 //route for delete a book
-router.delete("/books/:id", async (request, response) => {
+router.delete("/:id", async (request, response) => {
   try {
     const { id } = request.params;
     const result = await Book.findByIdAndDelete(id);

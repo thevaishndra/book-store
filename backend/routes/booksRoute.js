@@ -1,18 +1,7 @@
 import express from 'express'
 import { Book } from "../models/book.model.js";
-import cors from 'cors'
-const router = express.Router()
 
-//option 1 middleware for handling cors policy
-// app.use(cors())
-//option 2 allow custom origin
-app.use(
-  cors({
-    origin : 'http://localhost:3000',
-    methods : ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders : ['Content-Type']
-  })
-)
+const router = express.Router()
 
 //route for save a new book
 router.post("/", async (request, response) => {

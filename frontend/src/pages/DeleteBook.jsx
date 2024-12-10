@@ -3,11 +3,13 @@ import BackButton from '../components/BackButton.jsx'
 import Spinner from '../components/Spinner.jsx'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
+import {useSnackbar} from 'notistack';
 
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = navigate();
   const { id } = useParams();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleDeleteBook = () => {
     setLoading(true);
@@ -15,11 +17,13 @@ const DeleteBook = () => {
     .delete(`http://localhost:5555/books/${id}`)
     .then(() => {
       setLoading(false);
+      enqueueSnackbar('Book deleted successfully', {variant:'success'});
       navigate('/');
     })
     .catch((error) => {
       setLoading(false);
-      alert("An error happened, Check console")
+      // alert("An error happened, Check console")
+      enqueueSnackbar('Error', {variant : 'error'})
       console.log(error)
     });
   };
@@ -31,7 +35,8 @@ const DeleteBook = () => {
       {loading ? <Spinner/> : ''}
       <div className='flex flex-col items-center border-2 border-sky-400 rounded-xl p-8 mx-auto w-[600px]'>
         <h3 className='text-2xl'>Are you sure you want to delete this book?</h3>
-        <button className='p-4 bg-red-600 text-white m-8 w-full'>Yes, delete it</button>
+        <button className='p-4 bg-red-600 text-white m-8 w-full'
+        onClick={handleDeleteBook}>Yes, delete it</button>
       </div>
     </div>
   )

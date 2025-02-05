@@ -3,12 +3,13 @@ import BackButton from '../components/BackButton.jsx';
 import Spinner from '../components/Spinner.jsx';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notisnack';
+import { useSnackbar } from 'notistack';
 
 const CreateBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [publishYear, setPublishYear] = useState('');
+   const [genre, setGenre] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -18,6 +19,7 @@ const CreateBook = () => {
       title,
       author,
       publishYear,
+      genre,
     };
     setLoading(true);
     axios
@@ -71,7 +73,19 @@ const CreateBook = () => {
           />
         </div>
 
-        <button className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}></button>
+        <div>
+          <label className="text-xl mr-4 text-gray-500">Genre</label>
+          <input
+            type="text"
+            value={genre}
+            onChange={(e) => setGenre(e.target.value)}
+            className="border-2 border-gray-500 px-4 py-2 w-full"
+          />
+        </div>
+
+        <button className="p-2 bg-sky-300 m-8" onClick={handleSaveBook}>
+          Save Book
+        </button>
       </div>
     </div>
   );

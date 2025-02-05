@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom";
-import { PiBookOpenTextLight } from "react-icons/pi";
-import { BiUserCircle } from "react-icons/bi";
-import { AiOutlineEdit } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
-import { MdOutlineDelete } from "react-icons/md";
-import BookSingleCard from "./BookSingleCard";
+import React from "react"; 
+import BookSingleCard from "./BookSingleCard"; 
 
-const BooksCard = ({ books }) => {
+const BooksCard = ({ books = [] }) => {
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {books.map((item) => (
-        <BookSingleCard key={item._id} book={item}/>
-      ))}
+      {books.length > 0 ? (
+        books.map((item) => <BookSingleCard key={item._id} book={item} />)
+      ) : (
+        <p className="col-span-full text-center text-gray-500">
+          No books available
+        </p>
+      )}
     </div>
   );
 };

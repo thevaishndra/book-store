@@ -13,7 +13,7 @@ const Home = () => {
   const [loading, setLoading] = useState([false]);
   const [showType, setShowType] = useState("table");
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = process.env.VITE_API_URL;
 
   useEffect(() => {
     setLoading(true);

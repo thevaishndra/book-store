@@ -9,10 +9,12 @@ const ShowBook = () => {
   const [loading, setLoading] = useState(true); // Start as true to show spinner while loading
   const { id } = useParams();
 
+  const apiUrl = process.env.VITE_API_URL;
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`${apiUrl}/${id}`)
       .then((response) => {
         setBook(response.data.book);
         setLoading(false);

@@ -1,8 +1,33 @@
-import { AiOutlineClose } from 'react-icons/ai';
+import { useState } from 'react';
+import { AiOutlineClose, AiOutlineDelete } from "react-icons/ai";
 import { PiBookOpenTextLight } from 'react-icons/pi';
 import { BiUserCircle } from 'react-icons/bi';
+import { useSnackbar } from 'notistack'
 
 const BookModel = ({book, onClose}) => {
+  const { enqueueSnackbar } = useSnackbar();
+  const [review, setReview] = useState("")
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEdit = () => {
+    setIsEditing(true);
+  }
+
+  const handleChange = (event) => {
+    setReview(event.target.value)
+  }
+
+  const handleSave = () => {
+    enqueueSnackbar("Review saved succesfully", {variant : "success"});
+    setIsEditing(false);
+  }
+
+  const handleDelete = () => {
+    enqueueSnackbar("Review deleted", {variant : "error"});
+    setReview("");
+    setIsEditing(false);
+  }
+
   return (
     <div
       className="fixed bg-black bg-opacity-60 top-0 left-0
@@ -30,18 +55,38 @@ const BookModel = ({book, onClose}) => {
           <BiUserCircle className="text-red-300 text-2xl" />
           <h2>{book.author}</h2>
         </div>
-        <p className='mt-4'>Anything you want to show</p>
-        <p className='my-2'>
-            Lorem ipsum, dolor sit amet consectetur 
-            adipisicing elit. Unde veniam, labore voluptas
-            exercitationem debitis voluptatibus? Non laboriosam
-            doloribus distinctio maxime, ex pariatur molestias 
-            dolores ipsam deserunt. Delectus laboriosam rem nam!
-            Saepe nam sapiente voluptas facere neque impedit, vel 
-            similique at labore? Asperiores pariatur similique repellendus, 
-            deserunt architecto numquam impedit vero porro fugit nisi nobis 
-            est quae nihil amet culpa! Temporibus!
-        </p>
+
+        <div className="mt-4 p-3 border rounded-lg bg-gray-100 flex flex-col h-[150px] relative">
+          <div className="absolute top-2 right-2 flex gap-2">
+            
+
+            <AiOutlineDelete 
+            className="text-gray-600 cursor-pointer hover:text-red-500" 
+            onClick={handleDelete} />
+          </div>
+
+          {isEditing ? (
+            <textarea
+            className='w-full flex-grow p-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none'
+            value={review}
+            onChange={handleChange}
+            autoFocus />
+          ) : (
+            <p
+              className={`flex-grow text-sm overflow-auto ${review ? "text-gray-700" : "text-gray-400 italic"}`}
+              onClick={handleEdit}
+            >{review || "Your thoughts about this book"}</p>
+          )}
+
+          {isEditing && (
+            <div className='flex justify-end mt-2'>
+              <button variant="contained" color="primary" onClick={handleSave} >
+                Save
+              </button>
+            </div>
+          )}
+        </div>
+
       </div>
     </div>
   );

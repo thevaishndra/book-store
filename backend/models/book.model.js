@@ -17,6 +17,10 @@ const bookSchema = mongoose.Schema(
         publishYear : {
             type : Number,
             required : true,
+        },
+        review : {
+            type : String,
+            default : "",
         }
     }, {timestamps : true}
 )

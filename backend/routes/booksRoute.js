@@ -97,4 +97,53 @@ router.delete("/:id", async (request, response) => {
   }
 });
 
+// Route for update review
+router.put("/:id/review", async(request, response) => {
+  try {
+    const { id } = request.params();
+    const { review } = request.body();
+
+    if(!review){
+      return response.status(400).send({ message : "Review cannot be empty"});
+    }
+
+    const updatedBook = await Book.findByIdAndUpdate(
+      id,
+      { review },
+      { new : true},
+    )
+
+    if(!updatedBook){
+      return response.status(404).send({ message : "Book not found"});
+    }
+
+    return response.status(200).send({ message : "Review updated", book : updatedBook})
+  } catch (error) {
+    console.error(error.message);
+    response.status(500).send({message : error.message });
+  }
+});
+
+// Route for delete review
+router.delete("/:id/review", async(request, response) => {
+  try {
+    const { id } = request.params();
+    
+    const updatedBook = await Book.findByIdAndUpdate(
+      id,
+      { review : ""},
+      { new : true}
+    );
+
+    if(!updatedBook){
+      return response.status(400).send({ message : "Book not found"});
+    }
+
+    return response.status(200).send({ message : "Review deleted", book : updatedBook})
+  } catch (error) {
+    console.error(error.message);
+    response.status(500).send({message : error.message});
+  }
+})
+
 export default router;

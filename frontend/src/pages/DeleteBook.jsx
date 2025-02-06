@@ -11,10 +11,12 @@ const DeleteBook = () => {
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handleDeleteBook = () => {
     setLoading(true);
     axios
-    .delete(`http://localhost:5555/books/${id}`)
+    .delete(`${apiUrl}/books/${id}`)
     .then(() => {
       setLoading(false);
       enqueueSnackbar('Book deleted successfully', {variant:'success'});

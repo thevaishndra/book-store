@@ -15,10 +15,12 @@ const EditBook = () => {
   const { id } = useParams();
   const { enqueueSnackbar } = useSnackbar();
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`${apiUrl}/books/${id}`)
       .then((response) => {
         setTitle(response.data.title || "");
         setAuthor(response.data.author || "");
@@ -37,7 +39,7 @@ const EditBook = () => {
     const data = { title, author, publishYear, genre };
     setLoading(true);
     axios
-      .put(`http://localhost:5555/books/${id}`, data)
+      .put(`${apiUrl}/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book edited successfully", { variant: "success" });

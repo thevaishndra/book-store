@@ -13,10 +13,12 @@ const Home = () => {
   const [loading, setLoading] = useState([false]);
   const [showType, setShowType] = useState("table");
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5555/books") //axios is used to make http requests
+      .get(`${apiUrl}/books`) //axios is used to make http requests
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);

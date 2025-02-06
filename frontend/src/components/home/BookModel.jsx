@@ -10,6 +10,8 @@ const BookModel = ({ book, onClose }) => {
   const [review, setReview] = useState(book.review || "");
   const [isEditing, setIsEditing] = useState(false);
 
+   const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     console.log("Fetching book with ID:", book._id);
     if (!book._id) {
@@ -18,9 +20,7 @@ const BookModel = ({ book, onClose }) => {
     }
     const fetchBook = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5555/books/${book._id}`
-        );
+        const response = await axios.get(`${apiUrl}/books/${book._id}`);
         setReview(response.data.book.review || "");
       } catch (error) {
         console.error("Error fetching book data", error);
@@ -39,7 +39,7 @@ const BookModel = ({ book, onClose }) => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`http://localhost:5555/books/${book._id}/review`, {
+      await axios.put(`${apiUrl}/books/${book._id}/review`, {
         review,
       });
       enqueueSnackbar("Review successfully saved", { variant: "success" });
@@ -52,9 +52,7 @@ const BookModel = ({ book, onClose }) => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this review?")) {
       try {
-        await axios.delete(
-          `http://localhost:5555/books/${book._id}/review`
-        );
+        await axios.delete(`${apiUrl}/books/${book._id}/review`);
         setReview("");
         enqueueSnackbar("Review deleted", { variant: "error" });
         setIsEditing(false);

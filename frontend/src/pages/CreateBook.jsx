@@ -14,6 +14,8 @@ const CreateBook = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handleSaveBook = () => {
     const data = {
       title,
@@ -23,18 +25,18 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-    .post('http://localhost:5555/books', data)
-    .then(() => {
-      setLoading(false);
-      enqueueSnackbar('Book created successfully', {variant : 'success'});
-      navigate('/')
-    })
-    .catch((error) => {
-      setLoading(false);
-      // alert('An error happened, Check console')
-      enqueueSnackbar('Error', {variant : 'error'});
-      console.log(error);
-    });
+      .post("${apiUrl}/books", data)
+      .then(() => {
+        setLoading(false);
+        enqueueSnackbar("Book created successfully", { variant: "success" });
+        navigate("/");
+      })
+      .catch((error) => {
+        setLoading(false);
+        // alert('An error happened, Check console')
+        enqueueSnackbar("Error", { variant: "error" });
+        console.log(error);
+      });
   }
 
   return (

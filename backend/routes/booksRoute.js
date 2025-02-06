@@ -98,52 +98,56 @@ router.delete("/:id", async (request, response) => {
 });
 
 // Route for update review
-router.put("/:id/review", async(request, response) => {
+router.put("/:id/review", async (req, res) => {
+  const { id } = req.params;
+  const { review } = req.body;
+
+  if (!review) {
+    return res.status(400).send({ message: "Review cannot be empty" });
+  }
+
   try {
-    const { id } = request.params();
-    const { review } = request.body();
-
-    if(!review){
-      return response.status(400).send({ message : "Review cannot be empty"});
-    }
-
     const updatedBook = await Book.findByIdAndUpdate(
       id,
       { review },
-      { new : true},
-    )
+      { new: true }
+    );
 
-    if(!updatedBook){
-      return response.status(404).send({ message : "Book not found"});
+    if (!updatedBook) {
+      return res.status(404).send({ message: "Book not found" });
     }
 
-    return response.status(200).send({ message : "Review updated", book : updatedBook})
+    return res
+      .status(200)
+      .send({ message: "Review updated", book: updatedBook });
   } catch (error) {
     console.error(error.message);
-    response.status(500).send({message : error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 
 // Route for delete review
-router.delete("/:id/review", async(request, response) => {
+router.delete("/:id/review", async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = request.params();
-    
     const updatedBook = await Book.findByIdAndUpdate(
       id,
-      { review : ""},
-      { new : true}
+      { review: "" },
+      { new: true }
     );
 
-    if(!updatedBook){
-      return response.status(400).send({ message : "Book not found"});
+    if (!updatedBook) {
+      return res.status(400).send({ message: "Book not found" });
     }
 
-    return response.status(200).send({ message : "Review deleted", book : updatedBook})
+    return res
+      .status(200)
+      .send({ message: "Review deleted", book: updatedBook });
   } catch (error) {
     console.error(error.message);
-    response.status(500).send({message : error.message});
+    res.status(500).send({ message: error.message });
   }
-})
+});
 
 export default router;

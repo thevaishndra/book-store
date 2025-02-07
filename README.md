@@ -119,5 +119,7 @@ Contributions are welcome! but what will you contribute, project is just for my 
 
 This project is open-source and available under the MIT License.
 
-## **HAVE A GOOD DAY ⋆ ִֶָ ๋𓂃🎐 ⋆ ** consider giving repo a ⭐
+## **HAVE A GOOD DAY ! **
+⋆ ִֶָ ๋𓂃🎐 ⋆ 
+consider giving repo a ⭐
 

@@ -36,22 +36,26 @@ Notifications: Notistack
 
 ## 📂 Folder Structure
 
-📦 bookstore-mern-project
-├── 📁 backend
-│ ├── 📁 config # Database configuration
-│ ├── 📁 models # Mongoose models (Book)
-│ ├── 📁 routes # Express routes for books & reviews
-│ ├── 📄 server.js # Express server entry point
-│ ├── 📄 .env # Environment variables
-├── 📁 frontend
-│ ├── 📁 src
-│ │ ├── 📁 components # Reusable UI components
-│ │ ├── 📁 pages # Book list & details pages
-│ │ ├── 📁 context # Global state management
-│ │ ├── 📄 App.js # Main React app file
-│ │ ├── 📄 index.js # React entry point
-├── 📄 README.md # Project documentation
-├── 📄 package.json # Dependencies & scripts
+## 📂 Folder Structure
+
+```plaintext
+bookstore-mern-project/
+├── backend/
+│   ├── config/  # Database configuration
+│   ├── models/  # Mongoose models (Book)
+│   ├── routes/  # Express routes for books & reviews
+│   ├── server.js  # Express server entry point
+│   ├── .env  # Environment variables
+├── frontend/
+│   ├── src/
+│   │   ├── components/  # Reusable UI components
+│   │   ├── pages/  # Book list & details pages
+│   │   ├── context/  # Global state management
+│   │   ├── App.js  # Main React app file
+│   │   ├── index.js  # React entry point
+├── README.md  # Project documentation
+├── package.json  # Dependencies & scripts
+
 
 ## 🚀 Getting Started
 

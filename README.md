@@ -61,8 +61,6 @@ cd bookstore-mern
 
 ### 2️⃣ Backend Setup
 ```
-Copy
-Edit
 cd backend
 npm install   # Install backend dependencies
 ```

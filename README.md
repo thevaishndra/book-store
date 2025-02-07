@@ -36,8 +36,6 @@ Notifications: Notistack
 
 ## 📂 Folder Structure
 
-## 📂 Folder Structure
-
 ```plaintext
 bookstore-mern-project/
 ├── backend/
@@ -55,6 +53,7 @@ bookstore-mern-project/
 │   │   ├── index.js  # React entry point
 ├── README.md  # Project documentation
 ├── package.json  # Dependencies & scripts
+```
 
 
 ## 🚀 Getting Started
@@ -88,61 +87,21 @@ npm start     # Start React development server
 
 ### 📌 Books API
 
-Method
-
-Endpoint
-
-Description
-
-POST
-
-/api/books
-
-Add a new book
-
-GET
-
-/api/books
-
-Get all books
-
-GET
-
-/api/books/:id
-
-Get a single book by ID
-
-PUT
-
-/api/books/:id
-
-Update book details
-
-DELETE
-
-/api/books/:id
-
-Delete a book
+| Method | Endpoint        | Description                |
+|--------|----------------|----------------------------|
+| POST   | `/api/books`   | Add a new book            |
+| GET    | `/api/books`   | Get all books             |
+| GET    | `/api/books/:id` | Get a single book by ID  |
+| PUT    | `/api/books/:id` | Update book details      |
+| DELETE | `/api/books/:id` | Delete a book           |
 
 ### ✍️ Reviews API
 
-Method
+| Method | Endpoint               | Description               |
+|--------|-------------------------|---------------------------|
+| PUT    | `/api/books/:id/review` | Update or add a book review |
+| DELETE | `/api/books/:id/review` | Delete a book review       |
 
-Endpoint
-
-Description
-
-PUT
-
-/api/books/:id/review
-
-Update or add a book review
-
-DELETE
-
-/api/books/:id/review
-
-Delete a book review
 
 ## 🛠 Tools Used
 

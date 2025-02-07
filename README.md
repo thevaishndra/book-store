@@ -16,23 +16,17 @@ A full-stack Bookstore application built using MongoDB, Express, React, and Node
 
 🎨 UI designed with React & Tailwind CSS
 
-🔐 Secure backend with proper validations
-
 ✅ Persistent data storage in MongoDB
 
 ## 🛠 Tech Stack
 
-Frontend: React, Tailwind CSS
+- **Frontend:** React, Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **API Testing:** Postman  
+- **State Management:** React Hooks  
+- **Notifications:** Notistack  
 
-Backend: Node.js, Express.js
-
-Database: MongoDB
-
-API Testing: Postman
-
-State Management: React Hooks
-
-Notifications: Notistack
 
 ## 📂 Folder Structure
 
@@ -60,28 +54,34 @@ bookstore-mern-project/
 
 ### 1️⃣ Clone the Repository
 
+```sh
 git clone https://github.com/yourusername/bookstore-mern.git
 cd bookstore-mern
+```
 
 ### 2️⃣ Backend Setup
-
+```
+Copy
+Edit
 cd backend
 npm install   # Install backend dependencies
-
-Create a .env file inside backend with the following:
-
+```
+Create a .env file inside the backend directory with the following content:
+```
 MONGO_URI=your_mongodb_connection_string
 PORT=5000
-
+```
 Start the backend server:
-
+```
 npm run dev
-
+```
 ### 3️⃣ Frontend Setup
-
+```
 cd frontend
 npm install   # Install frontend dependencies
 npm start     # Start React development server
+```
+
 
 ## 🎯 API Endpoints
 
@@ -105,23 +105,21 @@ npm start     # Start React development server
 
 ## 🛠 Tools Used
 
-VS Code – Code editor
+- **VS Code –** Code editor
 
-MongoDB Compass – Database management
+- **MongoDB Compass –** Database management
 
-Postman – API testing
+- **Postman –** API testing
 
-Git & GitHub – Version control
+- **Git & GitHub –** Version control
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to fork the repository, create a new branch, and submit a pull request.
+Contributions are welcome! but what will you contribute, project is just for my practice
 
 ## 📜 License
 
 This project is open-source and available under the MIT License.
 
-## 🔗 Connect with Me
-
-GitHub | LinkedIn | Twitter
+**HAVE A GOOD DAY !** consider giving it a ⭐
 

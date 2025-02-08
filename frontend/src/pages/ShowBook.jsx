@@ -9,7 +9,7 @@ const ShowBook = () => {
   const [loading, setLoading] = useState(true); // Start as true to show spinner while loading
   const { id } = useParams();
 
-  const apiUrl = process.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     setLoading(true);

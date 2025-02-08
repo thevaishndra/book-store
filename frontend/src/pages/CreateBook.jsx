@@ -14,7 +14,7 @@ const CreateBook = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const apiUrl = process.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const handleSaveBook = () => {
     const data = {

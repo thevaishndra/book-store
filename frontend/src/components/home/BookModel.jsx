@@ -10,7 +10,7 @@ const BookModel = ({ book, onClose }) => {
   const [review, setReview] = useState(book.review || "");
   const [isEditing, setIsEditing] = useState(false);
 
-   const apiUrl = process.env.VITE_API_URL;
+   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     console.log("Fetching book with ID:", book._id);

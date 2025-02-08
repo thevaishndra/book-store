@@ -12,6 +12,7 @@ const Home = () => {
   const [showType, setShowType] = useState("table");
 
   const apiUrl = import.meta.env.VITE_API_URL;
+  console.log(import.meta.env.VITE_API_URL);
 
   useEffect(() => {
     setLoading(true);

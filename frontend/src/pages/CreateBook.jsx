@@ -15,6 +15,8 @@ const CreateBook = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const apiUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL:", apiUrl);
+
 
   const handleSaveBook = () => {
     const data = {

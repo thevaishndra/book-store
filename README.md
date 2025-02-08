@@ -36,17 +36,19 @@ bookstore-mern-project/
 │   ├── config/  # Database configuration
 │   ├── models/  # Mongoose models (Book)
 │   ├── routes/  # Express routes for books & reviews
-│   ├── server.js  # Express server entry point
+│   ├── index.js  # Express server entry point
 │   ├── .env  # Environment variables
 ├── frontend/
 │   ├── src/
 │   │   ├── components/  # Reusable UI components
 │   │   ├── pages/  # Book list & details pages
-│   │   ├── context/  # Global state management
-│   │   ├── App.js  # Main React app file
-│   │   ├── index.js  # React entry point
+│   │   ├── App.jsx  # Main React app file
+│   │   ├── main.jsx  # React entry point
+|   |── .env #Environment variables
+|   |── .gitignore  # Git ignored files
+|   |── package.json  # Dependencies & scripts
 ├── README.md  # Project documentation
-├── package.json  # Dependencies & scripts
+├── .gitignore  # Git ignored files
 ```
 
 
